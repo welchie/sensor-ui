@@ -14,6 +14,7 @@ function App() {
     <div className="App">
     <HeaderPage/>
       <div id="page-body">
+      
       <Routes>
        <Route path="/login" element={<LoginPage/>} />
        <Route path="/main" element = {<MainPage />} />
@@ -21,6 +22,8 @@ function App() {
        <Route path="*" element={<NotFoundPage/>}/>
        </Routes>
       </div>
+
+      <image src={logo}/>
     </div>
     </BrowserRouter>    
   );
