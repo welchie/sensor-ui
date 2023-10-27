@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import * as React from 'react';
 import dayjs from 'dayjs';
+import ChartsPage from './ChartsPage';
 
 const MainPage = () =>
 {
@@ -17,7 +18,6 @@ const MainPage = () =>
     const [startDate,setStartDate] = useState('');
     const [endDate,setEndDate] = useState('');
     const [results,setResults] = useState('');
-    const [locale, setLocale] = React.useState('en_GB');
 
     const search = async() => {
         try{
@@ -27,11 +27,11 @@ const MainPage = () =>
   
             const headers = "-H Basic dXNlcjpwYXNzd29yZA==";
     
-            var convertStartDate = dayjs(startDate).format('YYYY-MM-DD hh:mm:ss');
+            var convertStartDate = dayjs(startDate).format('YYYY-MM-DD HH:mm:ss');
             var convertEndDate = dayjs(endDate).format('YYYY-MM-DD hh:mm:ss');
     
             var url = "/sensordata/findbynameanddatebetween?name=" + sensorID + "&startdate=" + convertStartDate + "&enddate=" + convertEndDate;
-
+            //alert(url);
             const response = await axios.get(url,{headers});
   
             setResults(response.data);
@@ -55,6 +55,8 @@ const MainPage = () =>
       autoComplete="off"
 
     >
+
+
         <TextField
         id="outlined-controlled"
         label="Sensor ID"
@@ -65,21 +67,24 @@ const MainPage = () =>
         }}
       />
                <br></br>
-                <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={locale}>
+                <LocalizationProvider dateAdapter={AdapterDayjs} >
+
+
                 <DateTimePicker
                   label="Start Date"
-                  format="YYYY-MM-DD hh:mm:ss"
-                  locale={locale}
+                  ampm={false}
                   value={startDate}
-                  onChange={(newStartDate) => setStartDate(newStartDate)}
+                  format="DD/MM/YYYY HH:mm:ss"
+                  onChange={(newValue) => setStartDate(newValue)}
+            
                   />
                   
                   
                     <DateTimePicker
                   label="End Date"
-                  format="YYYY-MM-DD hh:mm:ss"
-                  locale={locale}
+                    ampm={false}
                   value={endDate}
+                  format="DD/MM/YYYY HH:mm:ss"
                   onChange={(newEndDate) => setEndDate(newEndDate)}
                   />
     
@@ -91,10 +96,11 @@ const MainPage = () =>
             
            </Box>
            
-   
-               
+           {results ? (
+                     <ChartsPage data={results.SensorData}/>)
+                     : null}
+
                 {results ? (
-                    
                      <ResultsPage rows={results.SensorData}/>  )
                      : null}         
                      
