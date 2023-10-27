@@ -28,7 +28,7 @@ const MainPage = () =>
             const headers = "-H Basic dXNlcjpwYXNzd29yZA==";
     
             var convertStartDate = dayjs(startDate).format('YYYY-MM-DD HH:mm:ss');
-            var convertEndDate = dayjs(endDate).format('YYYY-MM-DD hh:mm:ss');
+            var convertEndDate = dayjs(endDate).format('YYYY-MM-DD HH:mm:ss');
     
             var url = "/sensordata/findbynameanddatebetween?name=" + sensorID + "&startdate=" + convertStartDate + "&enddate=" + convertEndDate;
             //alert(url);
