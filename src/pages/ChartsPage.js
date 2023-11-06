@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import { ChartContainer, BarPlot, BarChart, LineChart } from '@mui/x-charts';
+import {  BarChart, LineChart } from '@mui/x-charts';
 
 const ChartsPage = ({data}) => {
 
  
-    const [graphDataC,setGraphDataC] = useState([]);
-    const [graphDataF,setGraphDataF] = useState([]);
-    const [dates,setDates] = useState([]);
+    const [graphDataC] = useState([]);
+    const [graphDataF] = useState([]);
+    const [dates] = useState([]);
   
      const loadData = () => {
          for(var i=0; i < data.length; i++){
