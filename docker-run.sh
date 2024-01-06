@@ -1,1 +1,1 @@
-docker run -p 8000:3000 sensor-ui:0.0.1-SNAPSHOT
+docker run -p 3000:3000 welchie99/sensor-ui:0.0.3-SNAPSHOT

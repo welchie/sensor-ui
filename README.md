@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Sensor-UI Building React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+## Set /Build
+
+Install npm
+ - MAC: 
+   - `brew install npm`
+
+Install react
+ - `npm install react`
+ 
 
 ## Available Scripts
 
@@ -68,3 +79,48 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Docker
+Edit the `docker-build.sh` file to select the appropriate version
+
+e.g
+`docker image build -t welchie99/sensor-ui:0.0.2-SNAPSHOT .`
+
+### To build
+`./docker-build.sh`
+
+Once built check for the image
+
+`docker images`
+
+<table>
+    <tr>
+        <th>REPOSITORY</th>
+        <th>TAG</th>
+        <th>IMAGE ID</th>
+        <th>CREATED</th>
+        <th>SIZE</th>
+    </tr>
+    <tr>
+        <td>welchie99/sensor-ui</td>
+        <td>0.0.2-SNAPSHOT </td>
+        <td>0bc9b3a0f99</td>
+        <td>33 seconds ago</td>
+        <td>861MB</td>
+    </tr>
+</table>
+
+### Run docker locally
+`docker run -p 3000:3000 sensor-ui:0.0.2-SNAPSHOT`
+
+OR
+
+`./docker-run.sh`
+
+### Deploy to docker hub
+You will need to be logged into `https://hub.docker.com/`
+
+`docker push welchie99/sensor-ui:0.0.2-SNAPSHOT`
+
+
+
