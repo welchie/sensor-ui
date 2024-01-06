@@ -25,15 +25,14 @@ const MainPage = () =>
             setError('');
             setResults(null);
   
-            const headers = "-H Basic dXNlcjpwYXNzd29yZA==";
+            const headers = "Authorization: Basic dXNlcjpwYXNzd29yZA==";
     
             var convertStartDate = dayjs(startDate).format('YYYY-MM-DD HH:mm:ss');
             var convertEndDate = dayjs(endDate).format('YYYY-MM-DD HH:mm:ss');
-    
-            var url = "/sensordata/findbynameanddatebetween?name=" + sensorID + "&startdate=" + convertStartDate + "&enddate=" + convertEndDate;
+            var baseUrl = "http://ec2-34-244-123-50.eu-west-1.compute.amazonaws.com";
+            var url = baseUrl + "/sensordata/findbynameanddatebetween?name=" + sensorID + "&startdate=" + convertStartDate + "&enddate=" + convertEndDate;
             //alert(url);
             const response = await axios.get(url,{headers});
-  
             setResults(response.data);
        }
         catch (e) {
@@ -100,11 +99,13 @@ const MainPage = () =>
                      <ChartsPage data={results.SensorData}/>)
                      : null}
 
+
                 {results ? (
                      <ResultsPage rows={results.SensorData}/>  )
-                     : null}         
-                     
-            </> 
+                     : null}
+
+
+           </>
 
 
         </div>   

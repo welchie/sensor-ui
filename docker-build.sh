@@ -1,1 +1,1 @@
-docker image build -t sensor-ui:0.0.1-SNAPSHOT .
+docker image build -t welchie99/sensor-ui:0.0.3-SNAPSHOT .
